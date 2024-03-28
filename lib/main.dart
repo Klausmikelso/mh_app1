@@ -1,10 +1,12 @@
-import 'dart:async';
 
+import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:mh_app/firebase_options.dart';
+import 'package:mh_app/pages/Auth_page.dart';
 import 'package:mh_app/pages/login.dart';
 import 'package:mh_app/pages/signup.dart';
 import 'package:mh_app/questions.dart';
@@ -12,9 +14,13 @@ import 'package:mh_app/pages/setting.dart';
 import 'package:mh_app/taskitem.dart';
 import '../task.dart';
 import '../questions.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-void  main() {
-  
+void  main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
   runApp(Myapp1());
 }
 class Myapp1 extends StatelessWidget {
@@ -27,10 +33,10 @@ class Myapp1 extends StatelessWidget {
     );
     return MaterialApp(
       //pink:ARGB(255, 254, 65, 124)
-      // skin:rgba(254,202,213,255)
-      // blue:rgba(65,102,158,255)
+      // skin:fromARGB(255, 254, 202, 213)
+      // blue:fromARGB(255, 65, 102, 158)
       // rgba(26,60,115,255)
-      home: new SingnUpPage(),
+      home: new AuthUser(),
       routes: <String,WidgetBuilder> {
         '/Q1' : (BuildContext context) => new Q1(),
         '/Q2' : (BuildContext context) => new Q2(),
@@ -41,6 +47,7 @@ class Myapp1 extends StatelessWidget {
         '/S' : (BuildContext context) => new setting(),
         '/log' : (BuildContext context) => new LoginPage(),
         '/sin' : (BuildContext context) => new SingnUpPage(),
+        '/aut' : (BuildContext context) => new AuthUser(),
 
       },
       debugShowCheckedModeBanner: false,
