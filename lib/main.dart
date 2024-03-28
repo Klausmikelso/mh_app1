@@ -1,14 +1,20 @@
+import 'dart:async';
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:mh_app/pages/login.dart';
+import 'package:mh_app/pages/signup.dart';
 import 'package:mh_app/questions.dart';
-import 'package:mh_app/setting.dart';
+import 'package:mh_app/pages/setting.dart';
 import 'package:mh_app/taskitem.dart';
 import '../task.dart';
 import '../questions.dart';
 
-void main(){
+void  main() {
+  
   runApp(Myapp1());
 }
 class Myapp1 extends StatelessWidget {
@@ -20,8 +26,11 @@ class Myapp1 extends StatelessWidget {
         SystemUiOverlayStyle(statusBarColor: Colors.transparent)
     );
     return MaterialApp(
-
-      home: new Q1(),
+      //pink:ARGB(255, 254, 65, 124)
+      // skin:rgba(254,202,213,255)
+      // blue:rgba(65,102,158,255)
+      // rgba(26,60,115,255)
+      home: new SingnUpPage(),
       routes: <String,WidgetBuilder> {
         '/Q1' : (BuildContext context) => new Q1(),
         '/Q2' : (BuildContext context) => new Q2(),
@@ -30,7 +39,8 @@ class Myapp1 extends StatelessWidget {
         '/Q5' : (BuildContext context) => new Q5(),
         '/H' : (BuildContext context) => new Home(),
         '/S' : (BuildContext context) => new setting(),
-      
+        '/log' : (BuildContext context) => new LoginPage(),
+        '/sin' : (BuildContext context) => new SingnUpPage(),
 
       },
       debugShowCheckedModeBanner: false,
@@ -46,20 +56,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final TaskList=Task_it.Task_list();
-  Container Task_fun (){
-    return Container(
-      height: MediaQuery.of(context).size.height/3,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-
-      ),
-      alignment: Alignment.bottomLeft,
-      child: Row(children: [
-        Text("Check if you completed the task"),
-      ],),
-
-    );
-  }
+  
   
   @override
   Widget build(BuildContext context) {
@@ -73,51 +70,57 @@ class _HomeState extends State<Home> {
           backgroundColor: Color.fromARGB(255, 252, 143, 0),
           flexibleSpace: Container(
            
-            child:  Column(
-
-              children: [
-                
-                Row(
-                  children: [
-                    Padding(padding: EdgeInsets.only(left: 10)),
-                    IconButton(onPressed: (){
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const setting()),
-  );
-                    }, icon: Icon(Icons.menu)),
-                    Padding(padding: EdgeInsets.only(left: 15)),
-                    Text("Your Companion",
-      
-                      style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-      
-                  ],
-                ),
-                Padding(padding: EdgeInsets.all(10)),
-                TabBar(
-                  splashBorderRadius: BorderRadius.zero,
-                  indicator: BoxDecoration(
+            child:  Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+              
+                children: [
+                  SizedBox(height: 20,),
+                  Row(
+                    children: [
+                      Padding(padding: EdgeInsets.only(left: 10)),
+                      IconButton(onPressed: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const setting()),
+                );
+                      }, icon: Icon(Icons.menu)),
+                      Padding(padding: EdgeInsets.only(left: 15)),
+                      Text("Your Companion",
                     
-                    color: Colors.black12,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    
+                    ],
                   ),
-                  labelColor: (Colors.white),
-                  indicatorSize: TabBarIndicatorSize.tab,
-                  dividerColor: Colors.transparent,
-                  unselectedLabelColor: Colors.black,
-
-                  tabs: [
-                    Tab(child:Text("Tasks")),
-                    Tab(child:Text("Dashbord"))
-                      
-                    ]
+                  Padding(padding: EdgeInsets.all(10)),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: TabBar(
+                      splashBorderRadius: BorderRadius.zero,
+                      indicator: BoxDecoration(
+                        
+                        color: Colors.black12,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      labelColor: (Colors.white),
+                      indicatorSize: TabBarIndicatorSize.tab,
+                      dividerColor: Colors.transparent,
+                      unselectedLabelColor: Colors.black,
+                                  
+                      tabs: [
+                        Tab(child:Text("Tasks")),
+                        Tab(child:Text("Dashbord"))
+                          
+                        ]
+                      ),
                   )
-            ],),
+              ],),
+            ),
           ),
         ),
         body: TabBarView(children: [
