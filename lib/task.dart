@@ -12,8 +12,12 @@ class Task extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 10),
-      color: Colors.yellow,
+      margin: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20)
+      ),
+      
       height: (MediaQuery.of(context).size.height/4)+30,
       child: Padding(
         padding: EdgeInsets.all(4),
