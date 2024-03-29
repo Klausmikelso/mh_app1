@@ -7,6 +7,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:mh_app/firebase_options.dart';
 import 'package:mh_app/pages/Auth_page.dart';
+import 'package:mh_app/pages/chat_page.dart';
 import 'package:mh_app/pages/login.dart';
 import 'package:mh_app/pages/signup.dart';
 import 'package:mh_app/questions.dart';
@@ -32,7 +33,7 @@ class Myapp1 extends StatelessWidget {
         SystemUiOverlayStyle(statusBarColor: Colors.transparent)
     );
     return MaterialApp(
-      //pink:ARGB(255, 254, 65, 124)
+      //pink:fromARGB(255, 254, 65, 124)
       // skin:fromARGB(255, 254, 202, 213)
       // blue:fromARGB(255, 65, 102, 158)
       // rgba(26,60,115,255)
@@ -41,8 +42,7 @@ class Myapp1 extends StatelessWidget {
         '/Q1' : (BuildContext context) => new Q1(),
         '/Q2' : (BuildContext context) => new Q2(),
         '/Q3' : (BuildContext context) => new Q3(),
-        '/Q4' : (BuildContext context) => new Q4(),
-        '/Q5' : (BuildContext context) => new Q5(),
+        
         '/H' : (BuildContext context) => new Home(),
         '/S' : (BuildContext context) => new setting(),
         '/log' : (BuildContext context) => new LoginPage(),
@@ -74,7 +74,7 @@ class _HomeState extends State<Home> {
           
           toolbarHeight: 120,
           
-          backgroundColor: Color.fromARGB(255, 252, 143, 0),
+          backgroundColor: Color.fromARGB(255, 254, 65, 124),
           flexibleSpace: Container(
            
             child:  Padding(
@@ -145,10 +145,18 @@ class _HomeState extends State<Home> {
                 
               ),
             ),
-            color: Colors.yellow,
+            color:Color.fromARGB(255, 254, 202, 213),
           ),
           Container(
-            color: Colors.black,
+           alignment: Alignment.center,
+           child: GestureDetector(
+              onTap: (){
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ChatPage())
+            );
+              },
+              child: Text("chat page"),)
           )
           
   
