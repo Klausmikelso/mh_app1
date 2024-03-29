@@ -14,7 +14,7 @@ class Task extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Color.fromARGB(255, 65, 102, 158),
         borderRadius: BorderRadius.circular(20)
       ),
       
@@ -40,12 +40,17 @@ class Task extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Padding(padding: EdgeInsets.only(left: 10),),
-                      Text(Tas.name!),
+                      Text(Tas.name!,style: TextStyle(
+                        fontSize: 21,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white
+                      ),),
                   Expanded(child: Container()),
                   IconButton(onPressed: (){
 
                     onChanged(Tas);              
-                  }, icon: Tas.isdone? Icon(Icons.check_box ) : Icon(Icons.check_box_outline_blank)),
+                  }, icon: Tas.isdone? Icon(Icons.check_box,color: Colors.white,  ) : Icon(Icons.check_box_outline_blank,color: Colors.white,)),
                   ],
                   ),
                  

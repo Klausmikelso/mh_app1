@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.6
   firebase_core: ^2.27.2
   firebase_auth: ^4.18.0
+  dash_chat_2: ^0.0.18
+  chat_gpt_sdk: ^2.2.5
+  page_transition: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +66,16 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assests/park.png
+    - assests/BG.jpg
+    - assests/yoga.png
+    - assests/talk.png
+    - assests/music.png
+    - assests/sleep.png
+    #- assests/travel.png
+    - assests/exerc.png
+    - assests/slp.png
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
